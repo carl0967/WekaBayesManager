@@ -5,8 +5,5 @@ WekaのEditableBayesNetクラスを簡単に利用できるようにしたクラ
 	bayes.setEvidence("day", "1");<br>
 	bayes.clearEvidence("day");<br>
 	System.out.println(bayes.getMarginalProbability("species", "human"));<br><br>
-	```cpp
-print("hello\n");
-```
 このBayesManagerクラスを使用する場合Wekaの導入が必要になります。ビルドパスにweka.jarを追加してください。<br>
 このクラスの詳しい説明などはjavaファイルのほうを見てください。コメントで書いてあります。
