@@ -1,6 +1,6 @@
 # WekaBayesManager
 WekaのEditableBayesNetクラスを簡単に利用できるようにしたクラスです。<br><br>
-  WekaBayesManager bayes=new WekaBayesManager("xml/werewolf.xml");<br>
+    WekaBayesManager bayes=new WekaBayesManager("xml/werewolf.xml");<br>
 	bayes.setEvidence("seer_role", "possessed");<br>
 	bayes.setEvidence("day", "1");<br>
 	bayes.clearEvidence("day");<br>
