@@ -1,3 +1,5 @@
+package com.yy.bayes;
+
 import java.awt.BorderLayout;
 import java.util.HashMap;
 
@@ -27,7 +29,7 @@ public class WekaBayesManager {
 	public WekaBayesManager(String xmlFileName){
 		BIFReader reader = new BIFReader();    
 		try {
-			bayes=new EditableBayesNet( reader.processFile("xml/werewolf_test3.xml"));
+			bayes=new EditableBayesNet( reader.processFile(xmlFileName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,6 +49,12 @@ public class WekaBayesManager {
 	public void clearEvidence(String nodeName){
 		int nodeIndex =getNodeIndex(nodeName);
 		setEvidence(nodeIndex,-1);
+	}
+	/** 全てのノードにセットされているエビデンスを消去する */
+	public void clearAllEvidence(){
+		for(int i=0;i<bayes.getNrOfNodes();i++){
+			setEvidence(i,-1);
+		}
 	}
 	/**
 	 *  周辺確率(エビデンスがセットされている場合は周辺事後確率)を返す
@@ -146,7 +154,7 @@ public class WekaBayesManager {
 	}
 	public static void main(String[] args) {
 		//sample
-		WekaBayesManager bayes=new WekaBayesManager("xml/sample3.xml");
+		WekaBayesManager bayes=new WekaBayesManager("xml/werewolf.xml");
 		bayes.setEvidence("seer_role", "possessed");
 		bayes.setEvidence("day", "1");
 		bayes.clearEvidence("day");
