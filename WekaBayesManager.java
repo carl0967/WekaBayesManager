@@ -59,7 +59,7 @@ public class WekaBayesManager {
 	/**
 	 *  周辺確率(エビデンスがセットされている場合は周辺事後確率)を返す
 	 */
-	public double getMargin(String nodeName,String value){
+	public double getMarginalProbability(String nodeName,String value){
 		int nodeIndex = getNodeIndex(nodeName);
 		int valueIndex=valueNameMaps.get(nodeName).get(value);
 		return bayes.getMargin(nodeIndex)[valueIndex];
@@ -67,7 +67,7 @@ public class WekaBayesManager {
 	/**
 	 *  周辺確率(エビデンスがセットされている場合は周辺事後確率)を返す
 	 */
-	public double getMargin(int nodeIndex,int valueIndex){
+	public double getMarginalProbability(int nodeIndex,int valueIndex){
 		return bayes.getMargin(nodeIndex)[valueIndex];
 	}
 	/**
@@ -159,7 +159,7 @@ public class WekaBayesManager {
 		bayes.setEvidence("day", "1");
 		bayes.clearEvidence("day");
 		//seer_role=possessedになるという条件の時に、species=humanになる確率が表示される
-		System.out.println(bayes.getMargin("species", "human"));
+		System.out.println(bayes.getMarginalProbability("species", "human"));
 		//bayes.drawGraph();
 
 	}
