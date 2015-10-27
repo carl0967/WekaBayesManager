@@ -1,3 +1,4 @@
 # WekaBayesManager
 WekaのEditableBayesNetクラスを簡単に利用できるようにしたクラスです。
-このBayesManagerクラスを使用する場合Wekaの導入が必要になります。ビルドパスにweka.jarを追加してください。
+このBayesManagerクラスを使用する場合Wekaの導入が必要になります。ビルドパスにweka.jarを追加してください。<br>
+このクラスの簡単な使い方はmainメソッドに書いてあります。
