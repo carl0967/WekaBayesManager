@@ -43,14 +43,13 @@ public class WekaBayesManager {
 	}
 	public void setEvidence(int nodeIndex,int valueIndex){
 		bayes.setEvidence(nodeIndex, valueIndex);
-		calcMargin();
 	}
 	/** ノードにセットされているエビデンスを消去する */
 	public void clearEvidence(String nodeName){
 		int nodeIndex =getNodeIndex(nodeName);
 		setEvidence(nodeIndex,-1);
 	}
-	/** 全てのノードにセットされているエビデンスを消去する */
+	/** 全てのノードにセットされているエビデンスを消去し、calcMarginを呼び出す */
 	public void clearAllEvidence(){
 		for(int i=0;i<bayes.getNrOfNodes();i++){
 			bayes.setEvidence(i, -1);
@@ -132,9 +131,9 @@ public class WekaBayesManager {
 	}
 	
 	/**
-	 *  エビデンスがセットされた場合に呼び出される
+	 *  getMarginalProbabilityを呼び出す前に呼び出す必要がある
 	 */
-	private void calcMargin()  {
+	public void calcMargin()  {
 		//Marginの計算
 		MarginCalculator m_marginCalculator = new MarginCalculator();
 		try {
@@ -159,7 +158,7 @@ public class WekaBayesManager {
 		bayes.setEvidence("seer_role", "possessed");
 		bayes.setEvidence("day", "1");
 		bayes.clearEvidence("day");
-		
+		bayes.calcMargin();
 		//set または clear Evidenceをすると、marginは自動で計算されるので、あとはgetMarginalProbabilityで確率を求める
 		//seer_role=possessedになるという条件の時に、species=humanになる確率が表示される
 		System.out.println(bayes.getMarginalProbability("species", "human"));
